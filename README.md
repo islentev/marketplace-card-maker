@@ -1,0 +1,90 @@
+# marketplace-card-maker
+
+Каркас Python + Streamlit проекта для внутреннего инструмента генерации карточек товаров для Ozon и Wildberries.
+
+## Установка зависимостей
+
+```bash
+pip install -r requirements.txt
+```
+
+## Запуск приложения
+
+```bash
+streamlit run app.py
+```
+
+После запуска откроется минимальный экран с описанием, что это каркас v1.
+
+## Как сразу применить изменения локально и в GitHub
+
+1. Откройте терминал в папке проекта:
+
+```bash
+cd C:\Users\User\Desktop\marketplace-card-maker
+```
+
+2. Проверьте, что есть привязка к GitHub:
+
+```bash
+git remote -v
+```
+
+Если `origin` не задан, добавьте его:
+
+```bash
+git remote add origin https://github.com/islentev/marketplace-card-maker.git
+```
+
+3. Заберите изменения из репозитория в локальную папку:
+
+```bash
+git pull origin main
+```
+
+4. Если вы сделали локальные правки, отправьте их в GitHub:
+
+```bash
+git add .
+git commit -m "chore: sync local changes"
+git push origin main
+```
+
+## Простая схема работы по шагам (для вас)
+
+Ниже самый простой цикл после каждого моего шага.
+
+### 1) Забрать мои изменения из GitHub в локальную папку
+
+Откройте терминал в папке проекта и выполните:
+
+```bash
+cd C:\Users\User\Desktop\marketplace-card-maker
+git pull origin main
+```
+
+### 2) Запустить проект локально
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+### 3) Проверить, что всё открылось
+
+- в браузере откроется страница Streamlit;
+- если всё хорошо — пишете мне следующий шаг.
+
+### 4) Если терминал пишет ошибку
+
+Просто скопируйте текст ошибки и отправьте мне — я дам готовую команду, что нажать и куда вставить.
+
+---
+
+## Коротко: какие команды нужны чаще всего
+
+```bash
+cd C:\Users\User\Desktop\marketplace-card-maker
+git pull origin main
+streamlit run app.py
+```
