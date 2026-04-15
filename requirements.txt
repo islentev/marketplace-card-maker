@@ -1,0 +1,8 @@
+streamlit
+openai
+pillow
+python-dotenv
+rembg
+onnxruntime
+opencv-python
+numpy
