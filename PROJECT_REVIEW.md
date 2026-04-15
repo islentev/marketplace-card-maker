@@ -1,0 +1,187 @@
+# Аудит текущего состояния проекта marketplace-card-maker
+
+Дата: 2026-04-15
+
+## 1) Что обнаружено в репозитории
+
+На текущий момент в репозитории есть только:
+
+- `.git/` (служебные файлы git)
+- `.gitkeep`
+
+Кода приложения, структуры модулей и конфигурации из ТЗ пока нет.
+
+## 2) Сопоставление с ТЗ v1
+
+По состоянию на сейчас, статус требований:
+
+- Streamlit-интерфейс: **не реализован**
+- Core-модули (`image_prep`, `reference_analyzer`, `text_generator`, `renderer`, `watermark`, `storage`, `validators`): **не реализованы**
+- Хранение проектов в `projects/<project_id>/...`: **не реализовано**
+- Генерация 3 главных карточек и полного комплекта: **не реализовано**
+- Watermark и экспорт ZIP: **не реализованы**
+- `.env.example`, `.gitignore`, `requirements.txt`, `README.md`: **не реализованы**
+
+Итого: проект находится на стадии **нулевого состояния / pre-bootstrap**.
+
+## 3) Предлагаемый пошаговый план (строго по ТЗ)
+
+1. **Шаг 1:** создать каркас проекта и базовые файлы (`README.md`, `.gitignore`, `.env.example`, `requirements.txt`, `app.py`, `core/*`).
+2. **Шаг 2:** сделать базовый интерфейс Streamlit с блоками A–E.
+3. **Шаг 3:** реализовать сохранение проекта и файловой структуры `projects/<project_id>/...`.
+4. **Шаг 4:** добавить анализ референсов и генерацию `style_profile.json`.
+5. **Шаг 5:** реализовать генерацию текстовой структуры карточек.
+6. **Шаг 6:** реализовать генерацию 3 вариантов главной карточки.
+7. **Шаг 7:** добавить выбор одного из вариантов в UI.
+8. **Шаг 8:** реализовать генерацию остальных карточек на основе выбранной главной.
+9. **Шаг 9:** добавить watermark (2 режима) для превью.
+10. **Шаг 10:** добавить экспорт `preview.zip` и `final.zip`.
+11. **Шаг 11:** добавить перегенерацию главных и дополнительных карточек.
+
+## 4) Как будем работать дальше
+
+Готов двигаться **строго по шагам**, как вы указали:
+
+- вы даете задачу на один шаг;
+- я реализую только этот шаг;
+- фиксируем результат и двигаемся к следующему.
+
+## 5) Как связать локальную папку и GitHub (Windows)
+
+Если хотите работать из папки `C:\Users\User\Desktop\marketplace-card-maker`, используйте один из двух сценариев.
+
+### Вариант A (рекомендуется): сразу клонировать репозиторий в Desktop
+
+```bash
+cd C:\Users\User\Desktop
+git clone <URL_ВАШЕГО_РЕПОЗИТОРИЯ> marketplace-card-maker
+cd marketplace-card-maker
+git branch
+```
+
+После этого папка уже связана с GitHub, можно работать так:
+
+```bash
+git add .
+git commit -m "ваше сообщение"
+git push origin <ваша-ветка>
+```
+
+### Вариант B: если папка уже есть локально
+
+Если в `C:\Users\User\Desktop\marketplace-card-maker` уже лежат файлы проекта:
+
+```bash
+cd C:\Users\User\Desktop\marketplace-card-maker
+git init
+git remote add origin <URL_ВАШЕГО_РЕПОЗИТОРИЯ>
+git add .
+git commit -m "initial local commit"
+git branch -M main
+git push -u origin main
+```
+
+Если remote уже существует, используйте:
+
+```bash
+git remote set-url origin <URL_ВАШЕГО_РЕПОЗИТОРИЯ>
+```
+
+## 6) Куда класть `PROJECT_REVIEW.md`
+
+Кладите `PROJECT_REVIEW.md` в **корень проекта**:
+
+```bash
+C:\Users\User\Desktop\marketplace-card-maker\PROJECT_REVIEW.md
+```
+
+Дальше из этой же папки отправляйте изменения в GitHub:
+
+```bash
+cd C:\Users\User\Desktop\marketplace-card-maker
+git add PROJECT_REVIEW.md
+git commit -m "docs: update project review"
+git push
+```
+
+## 7) Разбор ваших ошибок и точные команды (Windows CMD)
+
+Ниже — почему возникли ошибки и как исправить.
+
+### Ошибка 1
+
+```bash
+fatal: pathspec 'PROJECT_REVIEW.md' did not match any files
+```
+
+У вас файл называется `PROJECT_REVIEW.md.txt`, а не `PROJECT_REVIEW.md`.
+
+Проверьте:
+
+```bash
+dir
+```
+
+Переименуйте:
+
+```bash
+ren PROJECT_REVIEW.md.txt PROJECT_REVIEW.md
+```
+
+(Если не получается, включите в Windows отображение расширений файлов и переименуйте через Проводник.)
+
+### Ошибка 2
+
+```bash
+git remote add origin
+usage: git remote add ... <name> <url>
+```
+
+Команда неполная — нужен URL:
+
+```bash
+git remote add origin https://github.com/islentev/marketplace-card-maker.git
+```
+
+Если `origin` уже есть:
+
+```bash
+git remote set-url origin https://github.com/islentev/marketplace-card-maker.git
+```
+
+Проверка:
+
+```bash
+git remote -v
+```
+
+### Ошибка 3
+
+```bash
+error: src refspec main does not match any
+```
+
+Причина: либо нет коммита, либо текущая ветка не `main`.
+
+Сделайте **в таком порядке**:
+
+```bash
+cd C:\Users\User\Desktop\marketplace-card-maker
+dir
+git status
+
+ren PROJECT_REVIEW.md.txt PROJECT_REVIEW.md
+
+git add PROJECT_REVIEW.md
+git commit -m "docs: add project review"
+
+git branch -M main
+git remote -v
+git remote set-url origin https://github.com/islentev/marketplace-card-maker.git
+
+git push -u origin main
+```
+
+### Важно
+
+Команда `git push -u origin main .` неверная: точка `.` не используется как refspec для `git push`.
